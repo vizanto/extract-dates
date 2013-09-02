@@ -39,67 +39,80 @@ def printout(a)
 end
 
 $hy = ',?[- .\\/]'
+$hd = ',?[-.\\/]'
 
 $y = '(?<year>(19|20|[\'`])?[0-9][0-9])'  #19 or 20 or ` or ',  plus 2 digits
 
 $months = {
-    1 =>  '(?<m_1>0?1|january|jan)',
-    2 =>  '(?<m_2>0?2|february|feb)',
-    3 =>  '(?<m_3>0?3|march|mar)',
-    4 =>  '(?<m_4>0?4|april|apr)',
-    5 =>  '(?<m_5>0?5|may|may)',
-    6 =>  '(?<m_6>0?6|june|jun)',
-    7 =>  '(?<m_7>0?7|july|jul)',
-    8 =>  '(?<m_8>0?8|august|aug)',
-    9 =>  '(?<m_9>0?9|september|sep|sept)',
-    10 => '(?<m_10>10|october|oct)',
-    11 => '(?<m_11>11|november|nov)',
-    12 => '(?<m_12>12|december|dec)',
+    1 =>  '(?<m_01>januari|january|jan)',
+    2 =>  '(?<m_02>februari|february|feb)',
+    3 =>  '(?<m_03>maart|march|mar)',
+    4 =>  '(?<m_04>april|april|apr)',
+    5 =>  '(?<m_05>mei|may)',
+    6 =>  '(?<m_06>juni|june|jun)',
+    7 =>  '(?<m_07>juli|july|jul)',
+    8 =>  '(?<m_08>augustus|august|aug)',
+    9 =>  '(?<m_09>september|sep|sept)',
+    10 => '(?<m_10>oktober|okt|october|oct)',
+    11 => '(?<m_11>november|nov)',
+    12 => '(?<m_12>december|dec)',
 }
 
-$m = "(?<month>#{$months[1]}|#{$months[2]}|#{$months[3]}|#{$months[4]}|#{$months[5]}|#{$months[6]}|#{$months[7]}|#{$months[8]}|#{$months[9]}|#{$months[10]}|#{$months[11]}|#{$months[12]})"
+$m   = "(?<month>(?<m_01>0?1)|(?<m_02>0?2)|(?<m_03>0?3)|(?<m_04>0?4)|(?<m_05>0?5)|(?<m_06>0?6)|(?<m_07>0?7)|(?<m_08>0?8)|(?<m_09>0?9)|(?<m_10>10)|(?<m_11>11)|(?<m_12>12))"
+$mmm = "(?<month>#{$months[1]}|#{$months[2]}|#{$months[3]}|#{$months[4]}|#{$months[5]}|#{$months[6]}|#{$months[7]}|#{$months[8]}|#{$months[9]}|#{$months[10]}|#{$months[11]}|#{$months[12]})[.]?"
 
-$d01 = '(?<d_1>0?1(st)?)'
-$d02 = '(?<d_2>0?2(nd)?)'
-$d03 = '(?<d_3>0?3(rd)?)'
-$d04 = '(?<d_4>0?4(th)?)'
-$d05 = '(?<d_5>0?5(th)?)'
-$d06 = '(?<d_6>0?6(th)?)'
-$d07 = '(?<d_7>0?7(th)?)'
-$d08 = '(?<d_8>0?8(th)?)'
-$d09 = '(?<d_9>0?9(th)?)'
-$d10 = '(?<d_10>10(th)?)'
-$d11 = '(?<d_11>11(th)?)'
-$d12 = '(?<d_12>12(th)?)'
-$d13 = '(?<d_13>13(th)?)'
-$d14 = '(?<d_14>14(th)?)'
-$d15 = '(?<d_15>15(th)?)'
-$d16 = '(?<d_16>16(th)?)'
-$d17 = '(?<d_17>17(th)?)'
-$d18 = '(?<d_18>18(th)?)'
-$d19 = '(?<d_19>19(th)?)'
-$d20 = '(?<d_20>20(th)?)'
-$d21 = '(?<d_21>21(st)?)'
-$d22 = '(?<d_22>22(nd)?)'
-$d23 = '(?<d_23>23(rd)?)'
-$d24 = '(?<d_24>24(th)?)'
-$d25 = '(?<d_25>25(th)?)'
-$d26 = '(?<d_26>26(th)?)'
-$d27 = '(?<d_27>27(th)?)'
-$d28 = '(?<d_28>28(th)?)'
-$d29 = '(?<d_29>29(th)?)'
-$d30 = '(?<d_30>30(th)?)'
-$d31 = '(?<d_31>31(st)?)'
+$d01 = '(?<d_1>0?\s?1(st)?)'
+$d02 = '(?<d_2>0?\s?2(nd)?)'
+$d03 = '(?<d_3>0?\s?3(rd)?)'
+$d04 = '(?<d_4>0?\s?4(th)?)'
+$d05 = '(?<d_5>0?\s?5(th)?)'
+$d06 = '(?<d_6>0?\s?6(th)?)'
+$d07 = '(?<d_7>0?\s?7(th)?)'
+$d08 = '(?<d_8>0?\s?8(th)?)'
+$d09 = '(?<d_9>0?\s?9(th)?)'
+$d10 = '(?<d_10>1\s?0(th)?)'
+$d11 = '(?<d_11>1\s?1(th)?)'
+$d12 = '(?<d_12>1\s?2(th)?)'
+$d13 = '(?<d_13>1\s?3(th)?)'
+$d14 = '(?<d_14>1\s?4(th)?)'
+$d15 = '(?<d_15>1\s?5(th)?)'
+$d16 = '(?<d_16>1\s?6(th)?)'
+$d17 = '(?<d_17>1\s?7(th)?)'
+$d18 = '(?<d_18>1\s?8(th)?)'
+$d19 = '(?<d_19>1\s?9(th)?)'
+$d20 = '(?<d_20>2\s?0(th)?)'
+$d21 = '(?<d_21>2\s?1(st)?)'
+$d22 = '(?<d_22>2\s?2(nd)?)'
+$d23 = '(?<d_23>2\s?3(rd)?)'
+$d24 = '(?<d_24>2\s?4(th)?)'
+$d25 = '(?<d_25>2\s?5(th)?)'
+$d26 = '(?<d_26>2\s?6(th)?)'
+$d27 = '(?<d_27>2\s?7(th)?)'
+$d28 = '(?<d_28>2\s?8(th)?)'
+$d29 = '(?<d_29>2\s?9(th)?)'
+$d30 = '(?<d_30>3\s?0(th)?)'
+$d31 = '(?<d_31>3\s?1(st)?)'
 
 $d = "(?<day>#{$d01}|#{$d02}|#{$d03}|#{$d04}|#{$d05}|#{$d06}|#{$d07}|#{$d08}|#{$d09}|#{$d10}|#{$d11}|#{$d12}|#{$d13}|#{$d14}|#{$d15}|#{$d16}|#{$d17}|#{$d18}|#{$d19}|#{$d20}|#{$d21}|#{$d22}|#{$d23}|#{$d24}|#{$d25}|#{$d26}|#{$d27}|#{$d28}|#{$d29}|#{$d30}|#{$d31})"
 
 $datefmt = {
-    yyyy_mm_dd: Regexp.new('\b' + $y + $hy + $m + $hy + $d + '\b', true),
-    yyyy_dd_mm: Regexp.new('\b' + $y + $hy + $d + $hy + $m + '\b', true),
-    dd_yyyy_mm: Regexp.new('\b' + $d + $hy + $y + $hy + $m + '\b', true),
-    dd_mm_yyyy: Regexp.new('\b' + $d + $hy + $m + $hy + $y + '\b', true),
-    mm_dd_yyyy: Regexp.new('\b' + $m + $hy + $d + $hy + $y + '\b', true),
-    mm_yyyy_dd: Regexp.new('\b' + $m + $hy + $y + $hy + $d + '\b', true),
+    dd_mm_yyyy:  Regexp.new('\b' + $d   + $hd + $m   + $hy + $y   + '\b', true),
+    dd_mmm_yyyy: Regexp.new('\b' + $d   + $hy + $mmm + $hy + $y   + '\b', true),
+
+    mm_dd_yyyy:  Regexp.new('\b' + $m   + $hd + $d   + $hy + $y   + '\b', true),
+    mmm_dd_yyyy: Regexp.new('\b' + $mmm + $hy + $d   + $hy + $y   + '\b', true),
+
+    yyyy_mm_dd:  Regexp.new('\b' + $y   + $hd + $m   + $hy + $d   + '\b', true),
+    yyyy_mmm_dd: Regexp.new('\b' + $y   + $hy + $mmm + $hy + $d   + '\b', true),
+
+    mm_yyyy_dd:  Regexp.new('\b' + $m   + $hd + $y   + $hy + $d   + '\b', true),
+    mmm_yyyy_dd: Regexp.new('\b' + $mmm + $hy + $y   + $hy + $d   + '\b', true),
+
+    dd_yyyy_mm:  Regexp.new('\b' + $d   + $hy + $y   + $hd + $m   + '\b', true),
+    dd_yyyy_mmm: Regexp.new('\b' + $d   + $hy + $y   + $hy + $mmm + '\b', true),
+
+    yyyy_dd_mmm: Regexp.new('\b' + $y   + $hy + $d   + $hy + $mmm + '\b', true),
+    yyyy_dd_mm:  Regexp.new('\b' + $y   + $hy + $d   + $hd + $m   + '\b', true),
 }
 
 while line = gets() do
