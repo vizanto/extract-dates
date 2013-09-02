@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env  rvm 1.9 do ruby
 
 def parse_year(y) 
     if y !~ /^(19|20)[0-9][0-9]$/
@@ -16,6 +16,8 @@ end
 def parse_day(d)
     d.sub!(/[a-zA-Z]*$/, "")
     d.sub!(/^0/, "")
+    d.sub!(/\s/, "")
+    return "0" + d if d.to_i < 10
     return d
 end
 
@@ -33,7 +35,7 @@ def parse_month(m)
 end
 
 def printout(a)
-    puts "#{a[:date_str]}: #{a[:fmt]}: #{a[:year]}-#{a[:month]}-#{a[:day]}: #{a[:line]}"
+    puts "#{a[:year]}-#{a[:month]}-#{a[:day]}: #{a[:date_str]}: #{a[:fmt]}: #{a[:line]}"
 end
 
 $hy = ',?[- .\\/]'
@@ -114,6 +116,7 @@ while line = gets() do
             a[:day] = $~[:day]
             a[:pre] = $~.pre_match
             a[:post] = $~.post_match
+            a[:fmt] = fmt
 
             match_cnt += 1
             a[:month] = parse_month(match)
