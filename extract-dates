@@ -115,7 +115,7 @@ $datefmt = {
     yyyy_dd_mm:  Regexp.new('\b' + $y   + $hy + $d   + $hd + $m   + '\b', true),
 }
 
-while line = gets() do
+while line = $stdin.gets() do
     match_cnt = 0
     $datefmt.each do |fmt, re|
         if ( re =~ line )
@@ -136,7 +136,13 @@ while line = gets() do
             a[:year] = parse_year(a[:year])
             a[:day] = parse_day(a[:day])
             a[:match_cnt] = match_cnt
-            printout(a)
+            
+            within_year  = ARGV[0].nil? || a[:year] .to_i <= ARGV[0].to_i
+            within_month = ARGV[1].nil? || a[:month].to_i <= ARGV[1].to_i
+            
+            if (within_year and within_month)
+                printout(a)
+            end
         end
     end
 end
